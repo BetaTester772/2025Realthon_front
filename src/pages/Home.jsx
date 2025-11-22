@@ -11,6 +11,11 @@ export default function Home() {
   const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
   const [advice, setAdvice] = useState("");
+  const params = new URLSearchParams();
+  courses.forEach((c) => {
+    params.append("course_ids", c.id);
+    params.append("target_grades", "A");
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -27,11 +32,25 @@ export default function Home() {
   }, []);
 
   useEffect(() => {
-    const fetchData = async () => {
+    const fetchAdvice = async () => {
       try {
+        if (courses.length === 0) return;
+
+        const params = new URLSearchParams();
+
+        // 수강 중인 모든 course id append
+        courses.forEach((c) => {
+          params.append("course_ids", c.id);
+          params.append("target_grades", "A"); // 임시: 전체 A 목표
+        });
+
         const res = await fetch(
-          "https://realthon.betatester772.dev/semester-advice?course_ids=1&course_ids=2&course_ids=3&target_grades=A%2B&target_grades=A&target_grades=B%2B"
+          `https://realthon.betatester772.dev/semester-advice?${params.toString()}`,
+          {
+            method: "GET",
+          }
         );
+
         const json = await res.json();
         setAdvice(json.overall_advice);
       } catch (err) {
@@ -39,9 +58,8 @@ export default function Home() {
       }
     };
 
-    fetchData();
-  }, []);
-
+    fetchAdvice();
+  }, [courses]);
   const handleClickCourse = (courseId) => {
     navigate(`/courses/${courseId}`);
   };
