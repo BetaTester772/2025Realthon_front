@@ -18,9 +18,11 @@ export default function Coursecard({ course }) {
     >
       <div style={{ display: "flex", flexDirection: "column" }}>
         <h4>{course.name}</h4>
-        <h4 style={{ color: "#C0D4FB" }}>{course.division}</h4>
+        <h4 style={{ color: "#C0D4FB" }}>{course.course_code}</h4>
 
-        <h4 style={{ marginTop: "16px" }}>평가 방식 : {course.grading_type}</h4>
+        <h4 style={{ marginTop: "16px" }}>
+          수강 인원 : {course.total_students}
+        </h4>
       </div>
     </div>
   );

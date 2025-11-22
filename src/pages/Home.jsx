@@ -10,6 +10,12 @@ export default function Home() {
   const [user, setuser] = useState("김리얼");
   const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
+  const [advice, setAdvice] = useState("");
+  const params = new URLSearchParams();
+  courses.forEach((c) => {
+    params.append("course_ids", c.id);
+    params.append("target_grades", "A");
+  });
 
   useEffect(() => {
     const fetchData = async () => {
@@ -25,6 +31,35 @@ export default function Home() {
     fetchData();
   }, []);
 
+  useEffect(() => {
+    const fetchAdvice = async () => {
+      try {
+        if (courses.length === 0) return;
+
+        const params = new URLSearchParams();
+
+        // 수강 중인 모든 course id append
+        courses.forEach((c) => {
+          params.append("course_ids", c.id);
+          params.append("target_grades", "A"); // 임시: 전체 A 목표
+        });
+
+        const res = await fetch(
+          `https://realthon.betatester772.dev/semester-advice?${params.toString()}`,
+          {
+            method: "GET",
+          }
+        );
+
+        const json = await res.json();
+        setAdvice(json.overall_advice);
+      } catch (err) {
+        console.error("fetch error:", err);
+      }
+    };
+
+    fetchAdvice();
+  }, [courses]);
   const handleClickCourse = (courseId) => {
     navigate(`/courses/${courseId}`);
   };
@@ -56,19 +91,8 @@ export default function Home() {
         </div>
       </div>
       <h2 style={{ margin: "24px 0 12px 0" }}>이번 학기, 선택과 집중 리포트</h2>
-      <div
-        style={{
-          backgroundColor: "#FAFAFC",
-          border: "1px solid #F4F4F6",
-          color: "#000000",
-          padding: "16px",
-          display: "flex",
-          borderRadius: "16px",
-          width: "90%",
-          margin: "12px 0px",
-        }}
-      >
-        예시 텍스트 입니다
+      <div style={{ display: "flex", gap: "8px", alignItems: "flex-end" }}>
+        {advice}
       </div>
       <h2 style={{ margin: "24px 0 12px 0" }}>수강 관리 중인 과목</h2>
       {courses.map((course) => (

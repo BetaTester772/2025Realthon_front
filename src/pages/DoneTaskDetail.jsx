@@ -32,7 +32,7 @@ export default function TaskDetail() {
       <Taskcard
         item={item}
         type={item.name.includes("과제") ? "과제" : "시험"}
-        rate="중요도 ⭐ : 5.0"
+        rate={`나의 점수: ${item.my_score}`}
       />
       <div
         style={{
