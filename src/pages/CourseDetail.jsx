@@ -148,15 +148,17 @@ export default function CourseDetail() {
           : "강의 정보를 불러오는 중..."}
       </h2>
       <Histogram courseId={courseId} />
-      <h3
-        style={{
-          margin: "20px 0 0 0",
-          textAlign: "center",
-        }}
-      >
-        과제 난이도: {courseAdvice.assignment_difficulty} • 시험 난이도:{" "}
-        {courseAdvice.exam_difficulty}
-      </h3>
+      {courseAdvice && (
+        <h3
+          style={{
+            margin: "20px 0 0 0",
+            textAlign: "space-between",
+          }}
+        >
+          과제 난이도: {courseAdvice.assignment_difficulty} • 시험 난이도:{" "}
+          {courseAdvice.exam_difficulty}
+        </h3>
+      )}
       <div
         style={{
           backgroundColor: "#FAFAFC",
