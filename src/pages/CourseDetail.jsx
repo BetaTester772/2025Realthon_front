@@ -159,8 +159,8 @@ export default function CourseDetail() {
           borderRadius: "16px",
           width: "90%",
           margin: "12px 0px",
-          minHeight: "90px",
-          maxHeight: "150px", // 너무 길면
+          minHeight: "150px",
+          maxHeight: "200px", // 너무 길면
           overflowY: "auto", // 스크롤 되도록
           gap: "8px",
         }}
