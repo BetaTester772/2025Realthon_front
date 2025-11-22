@@ -1,16 +1,73 @@
-# React + Vite
+# 2025Realthon Front
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 실행 방법
 
-Currently, two official plugins are available:
+### 설치
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+```bash
+npm install
+```
 
-## React Compiler
+### 개발 서버 실행
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+```bash
+npm run dev
+```
 
-## Expanding the ESLint configuration
+### 빌드
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+```bash
+npm run build
+```
+
+### 프리뷰
+
+```bash
+npm run preview
+```
+
+### 린트
+
+```bash
+npm run lint
+```
+
+## 파일 디렉토리 구조
+
+```
+2025Realthon_front/
+├── public/
+│   └── vite.svg
+├── src/
+│   ├── assets/
+│   ├── components/
+│   │   ├── AssignmentHistogram.jsx
+│   │   ├── Bottomnav.jsx
+│   │   ├── Coursecard.jsx
+│   │   ├── Histogram.jsx
+│   │   └── Taskcard.jsx
+│   ├── data/
+│   │   └── courses.js
+│   ├── pages/
+│   │   ├── CourseDetail.jsx
+│   │   ├── DoneTaskDetail.jsx
+│   │   ├── Home.jsx
+│   │   ├── Profile.jsx
+│   │   └── TaskDetail.jsx
+│   ├── App.css
+│   ├── App.jsx
+│   ├── index.css
+│   ├── main.jsx
+│   ├── style.css
+│   └── style-hoseong.css
+├── eslint.config.js
+├── index.html
+├── package.json
+└── vite.config.js
+```
+
+## 기술 스택
+
+- React 19.2.0
+- Vite 7.2.4
+- React Router DOM 7.9.6
