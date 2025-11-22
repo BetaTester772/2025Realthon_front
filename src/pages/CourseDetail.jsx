@@ -200,21 +200,15 @@ export default function CourseDetail() {
           margin: "12px 0px",
         }}
       >
-        <button>
-          <div style={{ display: "flex", flexDirection: "column" }}>
-            <h4>기말고사</h4>
-            <h4 style={{ color: "#C0D4FB" }}>시험</h4>
-            <div
-              style={{
-                display: "flex",
-                flexDirection: "row",
-                marginTop: "16px",
-              }}
-            >
-              <h4>중요도 ⭐ : 5.0</h4>
-            </div>
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <h4>기말고사</h4>
+          <h4 style={{ color: "#C0D4FB" }}>시험</h4>
+          <div
+            style={{ display: "flex", flexDirection: "row", marginTop: "16px" }}
+          >
+            <h4>중요도 ⭐ : 5.0</h4>
           </div>
-        </button>
+        </div>
       </div>
 
       <button style={{ width: "100%" }}>
