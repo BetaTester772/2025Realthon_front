@@ -190,7 +190,7 @@ export default function CourseDetail() {
       {upcomingItems.map((item) => (
         <button
           key={item.id}
-          onClick={() => handleClickItem(item.id)}
+          onClick={() => handleClickItem(item)}
           style={{ width: "100%", textAlign: "left" }}
         >
           <Taskcard
@@ -220,7 +220,7 @@ export default function CourseDetail() {
       {pastItems.map((item) => (
         <button
           key={item.id}
-          onClick={() => handleClickItem(item.id)}
+          onClick={() => handleClickItem(item)}
           style={{ width: "100%", textAlign: "left" }}
         >
           <Taskcard
