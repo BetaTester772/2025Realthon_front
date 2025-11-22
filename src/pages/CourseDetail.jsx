@@ -187,19 +187,27 @@ export default function CourseDetail() {
         )}
       </div>
       <h2 style={{ margin: "24px 0 12px 0" }}>예정된 과제 • 시험</h2>
-      {upcomingItems.map((item) => (
-        <button
-          key={item.id}
-          onClick={() => handleClickItem(item)}
-          style={{ width: "100%", textAlign: "left" }}
-        >
-          <Taskcard
-            item={item}
-            type={item.name.includes("과제") ? "과제" : "시험"}
-            rate="중요도 ⭐ : 5.0"
-          />
-        </button>
-      ))}
+      <div
+        style={{
+          backgroundColor: "#2E6FF3",
+          color: "#ffffff",
+          padding: "16px",
+          display: "flex",
+          borderRadius: "16px",
+          width: "90%",
+          margin: "12px 0px",
+        }}
+      >
+        <div style={{ display: "flex", flexDirection: "column" }}>
+          <h4>기말고사</h4>
+          <h4 style={{ color: "#C0D4FB" }}>시험</h4>
+          <div
+            style={{ display: "flex", flexDirection: "row", marginTop: "16px" }}
+          >
+            <h4>중요도 ⭐ : 5.0</h4>
+          </div>
+        </div>
+      </div>
       <button style={{ width: "100%" }}>
         <div
           style={{
