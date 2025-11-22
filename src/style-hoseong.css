@@ -1,0 +1,156 @@
+/* --- 기존 코드 유지 --- */
+h2 {
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+h3 {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+}
+
+h4 {
+    font-size: 14px;
+    margin: 0;
+    padding: 0;
+}
+
+.page {
+    padding: 24px;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center; /* 중앙 정렬 변경 */
+    background-color: #f9f9fa; /* 전체 배경색을 아주 연한 회색으로 변경 */
+    box-sizing: border-box;
+}
+
+button {
+    background: none;
+    padding: 0;
+    margin: 0;
+    border: none;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+select {
+    margin: 0;
+}
+
+/* --- 신규 추가 스타일 --- */
+
+/* 콘텐츠를 감싸는 컨테이너 */
+.container {
+    width: 100%;
+    max-width: 600px; /* 너무 넓어지지 않게 제한 */
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* 헤더 영역 */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* 카드 스타일 (섹션 구분용) */
+.card {
+    background-color: white;
+    padding: 24px;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+    border: 1px solid #f0f0f0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* 버튼 공통 스타일 */
+.btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 14px;
+    transition: all 0.2s ease;
+}
+
+/* 메인 액션 버튼 */
+.btn-primary {
+    background-color: #007aff;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: #005ecb;
+}
+
+.btn-primary:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+/* 아웃라인 버튼 (홈으로) */
+.btn-outline {
+    border: 1px solid #007aff;
+    color: #007aff;
+    background-color: transparent;
+}
+
+.btn-outline:hover {
+    background-color: rgba(0, 122, 255, 0.05);
+}
+
+/* 텍스트 입력창 */
+.textarea-field {
+    width: 100%;
+    padding: 16px;
+    border-radius: 12px;
+    border: 1px solid #e1e1e1;
+    font-family: inherit;
+    font-size: 15px;
+    resize: vertical;
+    outline: none;
+    background-color: #fbfbfb;
+    box-sizing: border-box;
+    transition: border-color 0.2s;
+}
+
+.textarea-field:focus {
+    border-color: #007aff;
+    background-color: white;
+}
+
+/* 상태 메시지 */
+.error-box {
+    background-color: #ffebee;
+    color: #c62828;
+    padding: 12px 16px;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.loading-text, .empty-text {
+    text-align: center;
+    color: #7D8A95;
+    padding: 40px 0;
+}
+
+.label-text {
+    color: #7D8A95;
+    margin-bottom: 8px;
+    display: block;
+}
+
+.content-text {
+    font-size: 16px;
+    line-height: 1.5;
+    color: #333;
+}
