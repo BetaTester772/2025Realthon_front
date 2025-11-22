@@ -1,14 +1,29 @@
 import "../style.css";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Search from "../assets/Search.png";
 import Coursecard from "../components/Coursecard";
 import Profile from "../assets/profile.png";
 import { useNavigate } from "react-router-dom";
-import { courses } from "../data/courses";
+//import { courses } from "../data/courses";
 
 export default function Home() {
   const [user, setuser] = useState("김리얼");
   const navigate = useNavigate();
+  const [courses, setCourses] = useState([]);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("http://134.185.97.247:8000/courses");
+        const json = await res.json();
+        setCourses(json);
+      } catch (err) {
+        console.error("fetch error:", err);
+      }
+    };
+
+    fetchData();
+  }, []);
 
   const handleClickCourse = (courseId) => {
     navigate(`/courses/${courseId}`);

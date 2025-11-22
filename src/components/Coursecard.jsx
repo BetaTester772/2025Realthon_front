@@ -17,18 +17,10 @@ export default function Coursecard({ course }) {
       }}
     >
       <div style={{ display: "flex", flexDirection: "column" }}>
-        <h4>{course.title}</h4>
-        <h4 style={{ color: "#C0D4FB" }}>{course.prof} 교수님</h4>
-        <div
-          style={{ display: "flex", flexDirection: "row", marginTop: "16px" }}
-        >
-          <img
-            src={Time}
-            alt="강의시간"
-            style={{ width: "18px", height: "18px", marginRight: "8px" }}
-          />
-          <h4>{course.time}</h4>
-        </div>
+        <h4>{course.name}</h4>
+        <h4 style={{ color: "#C0D4FB" }}>{course.division}</h4>
+
+        <h4 style={{ marginTop: "16px" }}>평가 방식 : {course.grading_type}</h4>
       </div>
     </div>
   );

@@ -1,8 +1,30 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Taskcard from "../components/Taskcard";
+import Histogram from "../components/histogram";
 
 export default function CourseDetail() {
+  const { courseId } = useParams();
+  const [course, setcourse] = useState(null);
   const [grade, setGrade] = useState("A");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch("http://134.185.97.247:8000/courses");
+        const json = await res.json();
+
+        const found = json.find((c) => String(c.id) === String(courseId));
+
+        setcourse(found);
+      } catch (err) {
+        console.error("fetch error:", err);
+      }
+    };
+
+    fetchData();
+  }, [courseId]);
+
   return (
     <div className="page">
       <div
@@ -33,9 +55,11 @@ export default function CourseDetail() {
         </select>
       </div>
       <h2 style={{ margin: "24px 0 12px 0" }}>
-        현대암호기초, 선택과 집중 리포트
+        {course
+          ? `${course.name}, 선택과 집중 리포트`
+          : "강의 정보를 불러오는 중..."}
       </h2>
-      <h2>히스토그램 자리</h2>
+      <Histogram />
       <div
         style={{
           backgroundColor: "#FAFAFC",
