@@ -50,7 +50,7 @@ export default function Histogram({ courseId }) {
             }}
             title={b.range}
           />
-          <h4 style={{ color: "#d9d9d9" }}>{b.range}</h4>
+          <h4 style={{ color: "#444548" }}>{b.range}</h4>
         </div>
       ))}
     </div>

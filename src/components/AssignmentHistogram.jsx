@@ -61,7 +61,7 @@ export default function AssignmentHistogram({ evaluationItemId }) {
             }}
             title={`범위: ${b.range}, 값: ${b.value}`}
           />
-          <h4 style={{ color: "#ddd", marginTop: "6px" }}>{b.range}</h4>
+          <h4 style={{ color: "#444548", marginTop: "6px" }}>{b.range}</h4>
         </div>
       ))}
     </div>
