@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
-export default function Histogram() {
+export default function Histogram1() {
   const [height, setheight] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const res = await fetch("http://134.185.97.247:8000/dumy-histo");
+        const res = await fetch(
+          "https://realthon.betatester772.dev/dumy-histo"
+        );
         const json = await res.json();
         const arr = Object.entries(json).map(([range, value]) => ({
           range,

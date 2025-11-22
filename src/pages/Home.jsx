@@ -10,6 +10,7 @@ export default function Home() {
   const [user, setuser] = useState("김리얼");
   const navigate = useNavigate();
   const [courses, setCourses] = useState([]);
+  const [advice, setAdvice] = useState("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -17,6 +18,22 @@ export default function Home() {
         const res = await fetch("https://realthon.betatester772.dev/courses");
         const json = await res.json();
         setCourses(json);
+      } catch (err) {
+        console.error("fetch error:", err);
+      }
+    };
+
+    fetchData();
+  }, []);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const res = await fetch(
+          "https://realthon.betatester772.dev/semester-advice?course_ids=1&course_ids=2&course_ids=3&target_grades=A%2B&target_grades=A&target_grades=B%2B"
+        );
+        const json = await res.json();
+        setAdvice(json.overall_advice);
       } catch (err) {
         console.error("fetch error:", err);
       }
@@ -56,19 +73,8 @@ export default function Home() {
         </div>
       </div>
       <h2 style={{ margin: "24px 0 12px 0" }}>이번 학기, 선택과 집중 리포트</h2>
-      <div
-        style={{
-          backgroundColor: "#FAFAFC",
-          border: "1px solid #F4F4F6",
-          color: "#000000",
-          padding: "16px",
-          display: "flex",
-          borderRadius: "16px",
-          width: "90%",
-          margin: "12px 0px",
-        }}
-      >
-        예시 텍스트 입니다
+      <div style={{ display: "flex", gap: "8px", alignItems: "flex-end" }}>
+        {advice}
       </div>
       <h2 style={{ margin: "24px 0 12px 0" }}>수강 관리 중인 과목</h2>
       {courses.map((course) => (

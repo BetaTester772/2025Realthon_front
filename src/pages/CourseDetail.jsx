@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import Taskcard from "../components/Taskcard";
-import Histogram from "../components/histogram";
+import Histogram from "../components/Histogram1";
 
 export default function CourseDetail() {
   const { courseId } = useParams();
@@ -9,6 +9,28 @@ export default function CourseDetail() {
   const [course, setcourse] = useState(null);
   const [items, setitems] = useState([]);
   const [grade, setGrade] = useState("A");
+
+  const handleChangeGrade = async (e) => {
+    const newGrade = e.target.value;
+    setGrade(newGrade);
+
+    try {
+      const params = new URLSearchParams();
+      params.append("course_ids", courseId);
+      params.append("target_grades", newGrade);
+
+      await fetch(
+        `https://realthon.betatester772.dev/semester-advice?${params.toString()}`,
+        {
+          method: "GET",
+        }
+      );
+
+      console.log("목표 등급 저장 성공");
+    } catch (err) {
+      console.error("목표 등급 저장 실패:", err);
+    }
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -43,8 +65,14 @@ export default function CourseDetail() {
     fetchData();
   }, []);
 
-  const handleClickItem = (itemId) => {
-    navigate(`/courses/${courseId}/${itemId}`);
+  const handleClickItem = (item) => {
+    if (item.is_submitted) {
+      // 완료된 태스크용 페이지
+      navigate(`/courses/${courseId}/${item.id}/done`);
+    } else {
+      // 안 완료된 태스크용 페이지
+      navigate(`/courses/${courseId}/${item.id}`);
+    }
   };
 
   const upcomingItems = items
@@ -69,7 +97,9 @@ export default function CourseDetail() {
         </h4>
         <select
           value={grade}
-          onChange={(e) => setGrade(e.target.value)}
+          onChange={(e) => {
+            handleChangeGrade(e);
+          }}
           style={{
             padding: "8px 12px",
             borderRadius: "8px",
