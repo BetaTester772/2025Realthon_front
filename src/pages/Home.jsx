@@ -1,6 +1,7 @@
 import "../style.css";
 import { useState } from "react";
 import Search from "../assets/Search.png";
+import Coursecard from "../components/Coursecard";
 
 export default function Home() {
   const [user, setuser] = useState("김리얼");
@@ -22,7 +23,10 @@ export default function Home() {
           <img src={Search} alt="검색" />
         </button>
       </div>
-      <h2 style={{ margin: "24px 0px" }}>수강 관리 중인 과목</h2>
+      <h2 style={{ margin: "24px 0 12px 0" }}>수강 관리 중인 과목</h2>
+      <Coursecard />
+      <Coursecard />
+      <Coursecard />
     </div>
   );
 }
